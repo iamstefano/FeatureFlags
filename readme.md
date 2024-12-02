@@ -49,23 +49,16 @@ Applicare un piano di esecuzione terraform
 terraform apply main.tfplan
 ############################################################
 
-# Guardare i risultati
+#Indirizzo ip pubblico#
 
-############################################################
-#Indirizzo ip pubblico #
-terraform output public_ip_address
-#Chiave privata
-terraform output -raw tls_private_key > id_rsa.pem # id_rsa.pem
-chmod 400 id_rsa
-#Usare SSH per connettersi alla macchina virtuale
-ssh -i id_rsa vmname@<public_ip_address>
-############################################################
+- terraform output public_ip_address
+  #Chiave privata
+- terraform output -raw tls_private_key > id_rsa.pem # id_rsa.pem
+- chmod 400 id_rsa
+  #Usare SSH per connettersi alla macchina virtuale
+- ssh -i id_rsa vmname@<public_ip_address>
+  ############################################################
 
-# Lavorare sulla macchina creando cartelle file ecc.
+##terraform destroy
 
-# Al termine distruggere le risorse
-
-############################################################
-terraform destroy
-
-ssh -i ./id_rsa.pem saVMLinux@13.74.184.186
+ssh -i ./id_rsa.pem saVMLinux@ip-pubblico
